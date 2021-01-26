@@ -24,6 +24,14 @@ module.exports = {
     libraryTarget: 'umd',
     libraryExport: 'default'
   },
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        use: [ 'raw-loader' ]
+      },
+    ]
+  },
   plugins: [
     new webpack.DllReferencePlugin({
       manifest: require('../ckeditor5/build/ckeditor5-dll.manifest.json'),

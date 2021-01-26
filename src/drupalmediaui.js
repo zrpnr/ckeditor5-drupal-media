@@ -1,5 +1,6 @@
 import { Plugin } from 'ckeditor5/src/core';
 import { ButtonView } from 'ckeditor5/src/ui';
+import mediaIcon from '../theme/icons/medialibrary.svg';
 
 export default class DrupalMediaUI extends Plugin {
   init() {
@@ -19,8 +20,8 @@ export default class DrupalMediaUI extends Plugin {
       const buttonView = new ButtonView(locale);
 
       buttonView.set({
-        label: editor.t('Drupal Media'),
-        withText: true,
+        label: editor.t('Insert Drupal Media'),
+        icon: mediaIcon,
         tooltip: true
       });
 
