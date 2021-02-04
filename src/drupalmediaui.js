@@ -10,7 +10,7 @@ export default class DrupalMediaUI extends Plugin {
 			return;
     }
 
-    const { libraryURL, openDialog } = options;
+    const { libraryURL, openDialog, dialogSettings = {} } = options;
     if (!libraryURL || typeof openDialog !== 'function') {
       return;
     }
@@ -32,7 +32,7 @@ export default class DrupalMediaUI extends Plugin {
           ({ attributes }) => {
             editor.execute('insertDrupalMedia', attributes);
           },
-          {},
+          dialogSettings,
         );
       });
 
