@@ -1,7 +1,6 @@
 import { isWidget } from 'ckeditor5/src/widget';
 
 export function isDrupalMediaWidget(viewElement) {
-
   return (
     isWidget(viewElement) && !!viewElement.getCustomProperty('drupalMedia')
   );

@@ -10,23 +10,35 @@ export default class DrupalMediaEditing extends Plugin {
   }
 
   init() {
-    this.attrs = ['alt', 'data-align', 'data-caption', 'data-entity-type', 'data-entity-uuid', 'data-view-mode'];
+    this.attrs = [
+      'alt',
+      'data-align',
+      'data-caption',
+      'data-entity-type',
+      'data-entity-uuid',
+      'data-view-mode',
+    ];
     const options = this.editor.config.get('drupalMedia');
     if (!options) {
-			return;
+      return;
     }
     const { previewURL, themeError } = options;
     this.previewURL = previewURL;
-    this.themeError = themeError || `
+    this.themeError =
+      themeError ||
+      `
       <p>${this.editor.t(
-        'An error occurred while trying to preview the media. Please save your work and reload this page.'
+        'An error occurred while trying to preview the media. Please save your work and reload this page.',
       )}<p>
     `;
 
     this._defineSchema();
     this._defineConverters();
 
-    this.editor.commands.add('insertDrupalMedia', new InsertDrupalMediaCommand(this.editor));
+    this.editor.commands.add(
+      'insertDrupalMedia',
+      new InsertDrupalMediaCommand(this.editor),
+    );
   }
 
   /**
@@ -45,7 +57,7 @@ export default class DrupalMediaEditing extends Plugin {
     element += '></drupal-media>';
 
     return element;
-  };
+  }
 
   async _fetchPreview(url, query) {
     const response = await fetch(`${url}?${new URLSearchParams(query)}`);
@@ -80,8 +92,8 @@ export default class DrupalMediaEditing extends Plugin {
     conversion.for('dataDowncast').elementToElement({
       model: 'drupalMedia',
       view: {
-        name: 'drupal-media'
-      }
+        name: 'drupal-media',
+      },
     });
 
     conversion.for('editingDowncast').elementToElement({
@@ -107,7 +119,7 @@ export default class DrupalMediaEditing extends Plugin {
         viewWriter.insert(viewWriter.createPositionAt(container, 0), media);
         viewWriter.setCustomProperty('drupalMedia', true, container);
         return toWidget(container, viewWriter, { label: 'media widget' });
-      }
+      },
     });
 
     this.attrs.forEach((attr) => {
