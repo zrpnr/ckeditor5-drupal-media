@@ -102,7 +102,7 @@ export default class DrupalMediaEditing extends Plugin {
           }
         });
         viewWriter.insert(viewWriter.createPositionAt(container, 0), media);
-
+        viewWriter.setCustomProperty('drupalMedia', true, container);
         return toWidget(container, viewWriter, { label: 'media widget' });
       }
     });
