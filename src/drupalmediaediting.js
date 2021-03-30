@@ -98,7 +98,7 @@ export default class DrupalMediaEditing extends Plugin {
             });
           } else {
             domElement.innerHTML = this.themeError;
-            domElement.setAttribute('aria-label', label);
+            domElement.setAttribute('aria-label', 'drupal-media');
           }
         });
         viewWriter.insert(viewWriter.createPositionAt(container, 0), media);
