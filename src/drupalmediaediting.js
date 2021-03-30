@@ -31,13 +31,16 @@ export default class DrupalMediaEditing extends Plugin {
 
   /**
    * MediaFilterController::preview requires the saved element.
+   * Not previewing data-caption since it does not get updated by new changes.
    * @todo: is there a better way to get the rendered dataDowncast string?
    */
   _renderElement(modelElement) {
     const attrs = modelElement.getAttributes();
     let element = '<drupal-media';
     for (let attr of attrs) {
-      element += ` ${attr[0]}="${attr[1]}"`;
+      if (attr[0] !== 'data-caption') {
+        element += ` ${attr[0]}="${attr[1]}"`;
+      }
     }
     element += '></drupal-media>';
 
