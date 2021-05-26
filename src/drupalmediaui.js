@@ -7,7 +7,7 @@ export default class DrupalMediaUI extends Plugin {
     const editor = this.editor;
     const options = this.editor.config.get('drupalMedia');
     if (!options) {
-      return;
+			return;
     }
 
     const { libraryURL, openDialog, dialogSettings = {} } = options;
@@ -22,7 +22,7 @@ export default class DrupalMediaUI extends Plugin {
       buttonView.set({
         label: editor.t('Insert Drupal Media'),
         icon: mediaIcon,
-        tooltip: true,
+        tooltip: true
       });
 
       buttonView.bind('isOn', 'isEnabled').to(command, 'value', 'isEnabled');
